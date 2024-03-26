@@ -1,8 +1,8 @@
 version: '3.8'
 services:
-  chatgpt-next-web:
+  nextchat:
     image: yidadaa/chatgpt-next-web:v2.11.3 # Enter the image version
-    container_name: chatgpt-next-web
+    container_name: nextchat
     ports:
       - "3000:3000"
     environment:
