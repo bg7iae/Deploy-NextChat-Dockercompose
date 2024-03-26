@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  chatgpt-next-web:
+    image: yidadaa/chatgpt-next-web:v2.11.3 # Enter the image version
+    container_name: chatgpt-next-web
+    ports:
+      - "3000:3000"
+    environment:
+      BASE_URL: "" # Override openai api request base url. default url https://api.openai.com
+      CODE: "" # Access password, separated by comma.
+      OPENAI_API_KEY: "" # Your openai api key, join multiple api keys with comma.
+      OPENAI_ORG_ID: "" # Specify OpenAI organization ID.
+      AZURE_URL: "" # Azure deploy url. Example: https://{azure-resource-url}/openai/deployments/{deploy-name}
+      AZURE_API_VERSION: "" # Azure Api Version, find it at Azure Documentation https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#chat-completions
+      AZURE_API_KEY: "" # Azure Api Key.
+      GOOGLE_URL: "" # Google Gemini Pro Api Url.
+      GOOGLE_API_KEY: "" # Google Gemini Pro Api Key.
+      HIDE_USER_API_KEY: "1" # If you do not want users to input their own API key, set this value to 1. 1/Empty
+      DISABLE_GPT4: "" # If you do not want users to use GPT-4, set this value to 1. 1/Empty
+      CUSTOM_MODELS: "-all,+gpt-3.5-turbo" # Default: Empty Example: +llama,+claude-2,-gpt-3.5-turbo,gpt-4-1106-preview=gpt-4-turbo means add llama, claude-2 to model list, and remove gpt-3.5-turbo from list, and display gpt-4-1106-preview as gpt-4-turbo
+      ENABLE_BALANCE_QUERY: "0" # If you do want users to query balance, set this value to 1, or you should set it to 0. 0/1
+      DISABLE_FAST_LINK: "" # If you want to disable parse settings from url, set this to 1. Empty/1
+    restart: unless-stopped
